@@ -12,7 +12,7 @@ require Exporter;
 # Do not simply export all your public functions/methods/constants.
 @EXPORT = qw(
 );
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 # Preloaded methods go here.
 
@@ -106,11 +106,18 @@ sub number_system_description
    return $Business::UPC::NumberSystems{$self->number_system};
 }
 
+sub coupon_value_code
+{
+   my $self = shift;
+   return undef unless $self->is_coupon;
+   return substr($self->prod_id, -2);
+}
+
 sub coupon_value
 {
    my $self = shift;
    return undef unless $self->is_coupon;
-   return $Business::UPC::CouponValues{substr($self->prod_id, -2)};
+   return $Business::UPC::CouponValues{$self->coupon_value_code};
 }
 
 sub coupon_family_code
@@ -349,17 +356,44 @@ Business::UPC - Perl extension for manipulating Universal Product Codes
 
 =head1 SYNOPSIS
 
-  use Business::UPC;
-  $upc1 = new Business::UPC('012345678905');
-  $upc2 = type_e Business::UPC('01201303');
+   use Business::UPC;
+
+   # Constructors:
+   # create a UPC object using standard (type-A) UPC
+   $upc = new Business::UPC('012345678905');
+   # create a UPC object using zero-supressed (type-E) UPC
+   $upc = type_e Business::UPC('01201303');
+
+   # is the UPC valid (correct check digit)?
+   $upc->is_valid;
+
+   # correct the check digit
+   $upc->fix_check_digit;
+
+   # get the numeric string:
+   $upc->as_upc;	# same as $upc->as_upc_a;
+   $upc->as_upc_a;
+   $upc->as_upc_e;
+
+   # get the components;
+   $upc->number_system;		# UPC number system character
+   $upc->mfr_id;		# Manufacturer ID
+   $upc->prod_id;		# Product ID
+   $upc->check_digit;		# Check Digit
+
+   # more information about the components:
+   $upc->number_system_description	# explain number_system
+
+   # methods specific to coupon UPC codes:
+   $upc->is_coupon;
+   $upc->coupon_family_code;		# 3-digit family code
+   $upc->coupon_family_description;	# explain above
+   $upc->coupon_value_code;		# 2-digit value code
+   $upc->coupon_value;			# explain above
 
 =head1 DESCRIPTION
 
-Stub documentation for Business::UPC was created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
-
-Blah blah blah.
+More detail to come later...
 
 =head1 AUTHOR
 
