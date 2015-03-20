@@ -70,6 +70,14 @@ print "not " unless $upc->is_valid;
 print "ok 16\n";
 print "not " unless ($upc->as_upc eq '012000000133');
 print "ok 17\n";
+print "not " unless ($upc->number_system eq '0');
+print "ok 17a\n";
+print "not " unless ($upc->mfr_id eq '12000');
+print "ok 17b\n";
+print "not " unless ($upc->prod_id eq '00013');
+print "ok 17c\n";
+print "not " unless ($upc->check_digit eq '3');
+print "ok 17d\n";
 
 # some tests with an incomplete type-e upc
 
@@ -111,4 +119,14 @@ print "not " unless ($upc->coupon_family_description eq 'Unknown');
 print "ok 28\n";
 
 
+# Test for warnings...
 
+{
+    my $err;
+    local $^W = 1;
+    local $SIG{ __WARN__ } = sub { $err = "@_" };
+    $upc = new Business::UPC('512345678900');
+    $upc->fix_check_digit;
+    print "not " if $err;
+    print "ok 29\n";
+}
