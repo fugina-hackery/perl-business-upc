@@ -1,7 +1,7 @@
 Changes
-README
 MANIFEST
 Makefile.PL
+README
 UPC.pm
 t/00-load.t
 t/01-correct.t
