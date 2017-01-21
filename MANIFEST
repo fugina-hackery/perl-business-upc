@@ -1,6 +1,6 @@
 Changes
-README
 MANIFEST
 Makefile.PL
+README
 UPC.pm
 test.pl
