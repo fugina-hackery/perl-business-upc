@@ -405,7 +405,7 @@ More detail to come later...
 
 =head1 AUTHOR
 
-Rob Fugina, robf@geeks.com
+Rob Fugina, robf@fugina.com
 
 =head1 SEE ALSO
 
