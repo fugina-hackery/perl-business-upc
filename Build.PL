@@ -16,6 +16,9 @@ my $build = Module::Build->new
    license => 'unknown',
    create_readme => 1,
    create_makefile_pl => 'traditional',
+   configure_requires => {
+      'Module::Build' => 0.40,
+      },
   );
 
 $build->create_build_script;
