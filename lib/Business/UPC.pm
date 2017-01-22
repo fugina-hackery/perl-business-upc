@@ -1,5 +1,7 @@
 package Business::UPC;
 
+# Copyright (c) 1997-2017 Rob Fugina <robf@fugina.com>
+
 use strict;
 use vars qw($VERSION);
 use subs qw(_check_digit _zeropad _expand_upc_e);
