@@ -12,7 +12,7 @@ require Exporter;
 # Do not simply export all your public functions/methods/constants.
 @EXPORT = qw(
 );
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 # Preloaded methods go here.
 
