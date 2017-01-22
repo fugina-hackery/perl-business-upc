@@ -202,7 +202,7 @@ sub _zeropad
 
 sub _expand_upc_e
 {
-   my $upc_e = _zeropad shift, 8;
+   my $upc_e = _zeropad(shift, 8);
 
    return undef if (length($upc_e) > 8);
 
