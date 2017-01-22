@@ -4,7 +4,6 @@ package Business::UPC;
 
 use strict;
 use vars qw($VERSION);
-use subs qw(_check_digit _zeropad _expand_upc_e);
 
 $VERSION = '0.06';
 
@@ -17,7 +16,7 @@ sub new
 
    return undef if length($value) > 12;
 
-   my ($number_system, $mfr_id, $prod_id, $check_digit) = unpack("AA5A5A", _zeropad $value);
+   my ($number_system, $mfr_id, $prod_id, $check_digit) = unpack("AA5A5A", _zeropad($value));
 
    return undef unless $number_system =~ m/^\d$/;
    return undef unless $mfr_id =~ m/^\d{5}$/;
@@ -44,7 +43,7 @@ sub type_e
 
    return undef if length($value) > 8;
 
-   my $expanded = _expand_upc_e $value;
+   my $expanded = _expand_upc_e($value);
 
    return new Business::UPC($expanded) if $expanded;
    return undef;
