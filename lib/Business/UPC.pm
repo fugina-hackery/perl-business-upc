@@ -1,18 +1,11 @@
 package Business::UPC;
 
+# Copyright (c) 1997-2017 Rob Fugina <robf@fugina.com>
+
 use strict;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
-use subs qw(_check_digit _zeropad _expand_upc_e);
+use vars qw($VERSION);
 
-require Exporter;
-
-@ISA = qw(Exporter);
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-@EXPORT = qw(
-);
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 # Preloaded methods go here.
 
@@ -23,7 +16,7 @@ sub new
 
    return undef if length($value) > 12;
 
-   my ($number_system, $mfr_id, $prod_id, $check_digit) = unpack("AA5A5A", _zeropad $value);
+   my ($number_system, $mfr_id, $prod_id, $check_digit) = unpack("AA5A5A", _zeropad($value));
 
    return undef unless $number_system =~ m/^\d$/;
    return undef unless $mfr_id =~ m/^\d{5}$/;
@@ -50,7 +43,7 @@ sub type_e
 
    return undef if length($value) > 8;
 
-   my $expanded = _expand_upc_e $value;
+   my $expanded = _expand_upc_e($value);
 
    return new Business::UPC($expanded) if $expanded;
    return undef;
@@ -413,7 +406,7 @@ More detail to come later...
 
 =head1 AUTHOR
 
-Rob Fugina, robf@geeks.com
+Rob Fugina, robf@fugina.com
 
 =head1 SEE ALSO
 
