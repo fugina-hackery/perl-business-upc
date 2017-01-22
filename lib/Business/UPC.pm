@@ -1,6 +1,6 @@
 package Business::UPC;
 
-# Copyright (c) 1997-2017 Rob Fugina <robf@fugina.com>
+# Copyright (c) 1998-2017 Rob Fugina <robf@fugina.com>
 
 use strict;
 use vars qw($VERSION);

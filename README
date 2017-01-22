@@ -3,26 +3,14 @@ Business::UPC - Perl extension for manipulating Universal Product Codes
 
 COPYRIGHT
 
-Copyright (c) 1998 Rob Fugina. All rights reserved. This program is free
-software; you can redistribute it and/or modify it under the same terms
-as Perl itself.
-
-IMPORTANT NOTES
-
-THIS IS ALPHA SOFTWARE.
-
-Some testing has been done, and I'm sure there are bugs left.
-
-As for additional features:  tell me what you want...
-
-The Business::UPC pod section is the main documentation.
-
-The documentation is only a draft and should be rewritten (I think).
-Any help on this issue would be very welcome.
+Copyright (c) 1998-2017 Rob Fugina. All rights reserved. This program
+is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself.
 
 DESCRIPTION
 
-This is the alpha release 0.01 of the Business::UPC parser generator.
+This module handles UPC numbers, checking and calculating check digits,
+and conversion between UPC types A and E.
 
 REQUIREMENTS
 
@@ -49,6 +37,6 @@ FEEDBACK
 Send feedback, comments and bug reports to:
 
 Rob Fugina
-robf@geekthing.com
+robf@fugina.com
 
 
