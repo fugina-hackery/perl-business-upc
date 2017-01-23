@@ -14,8 +14,8 @@ $upc = new Business::UPC('012345678905');
 
 ok($upc);
 ok($upc->is_valid);
-ok($upc->number_system eq '0');
-ok($upc->mfr_id eq '12345');
-ok($upc->prod_id eq '67890');
-ok($upc->check_digit eq '5');
+ok($upc->number_system, '0');
+ok($upc->mfr_id, '12345');
+ok($upc->prod_id, '67890');
+ok($upc->check_digit, '5');
 

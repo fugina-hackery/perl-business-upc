@@ -14,8 +14,8 @@ $upc = new Business::UPC('012345678900');
 
 ok($upc);
 ok(! $upc->is_valid);
-ok($upc->check_digit eq '0');
+ok($upc->check_digit, '0');
 ok($upc->fix_check_digit);
 ok($upc->is_valid);
-ok($upc->check_digit eq '5');
+ok($upc->check_digit, '5');
 
